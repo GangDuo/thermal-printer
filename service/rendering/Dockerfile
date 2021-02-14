@@ -1,5 +1,7 @@
 FROM ubuntu:18.04
 
+RUN perl -p -i.bak -e 's%https?://(?!security)[^ \t]+%http://jp.archive.ubuntu.com/ubuntu/%g' /etc/apt/sources.list
+
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends \
     ca-certificates \
